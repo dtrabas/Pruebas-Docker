@@ -1,0 +1,19 @@
+
+* Security Scanning¶
+
+
+	When you have built an image, it is good practice to scan it for security vulnerabilities using the docker scan command. Docker has partnered with Snyk to provide the vulnerability scanning service.
+	
+		docker scan <nombre-imagen>
+		
+		
+* Image Layering¶
+
+	You can look at what makes up an image. Using the docker image history command, you can see the command that was used to create each layer within an image.
+
+		docker image history getting-started
+		
+		
+* Layer caching
+
+	http://localhost/tutorial/image-building-best-practices/

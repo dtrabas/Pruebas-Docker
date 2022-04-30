@@ -1,0 +1,33 @@
+Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
+The big advantage of using Compose is you can define your application stack in a file, keep it at the root of your project repo (it's now version controlled), and easily enable someone else to contribute to your project. Someone would only need to clone your repo and start the compose app.
+
+* Los pasos a seguir para crear la aplicación serían:
+
+	1. Instalar Docker Compose 
+	
+		Estará instalada por defecto en Windows y Mac si hemos instalado Docker Desktop/Toolbox. 
+		
+		En Linux nos toca instalarlo
+		
+		Comprobamos la versión instalada:
+		
+			docker-compose version
+			
+	2. At the root of the app project, create a file named docker-compose.yml
+	
+	3. Ejecutar la aplicación
+	
+		Make sure no other copies of the app/db are running first (docker ps and docker rm -f <ids>).
+
+		Start up the application stack using the docker-compose up command. We'll add the -d flag to run everything in the background.
+
+			docker-compose up -d
+
+* Eliminar la aplciación de Docker y dedicarnos a otra cosa
+
+	docker-compose down
+	
+	^ El comando anterior no borra los volúmenes. Hay que indicarlo expresamente:
+	
+		docker-compose down --volumes

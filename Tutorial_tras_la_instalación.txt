@@ -1,0 +1,31 @@
+
+* Tutorial tras la instalación de docker:
+
+	- Clonar repositorio
+	
+		docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
+		
+	- Copiarlo en la carpeta actual
+	
+		docker cp repo:/git/getting-started/ .
+		
+	- Crear la imagen
+	
+		cd .\getting-started\
+	
+		docker build -t docker101tutorial .
+		
+	- Ejecutar la imagen
+	
+		docker run -d -p 80:80 --name docker-tutorial docker101tutorial
+		
+	- Compartirla subiéndola al repositorio del usuario dtrabas
+	
+		(la renombramos a 'docker101tutorial_bis' porque ya tenemos la que 
+		creamos desde el tutorial de la instalación en el pc EliteDesk)
+	
+		docker tag docker101tutorial dtrabas/docker101tutorial_bis
+		
+		docker push dtrabas/docker101tutorial_bis
+		
+* Ejecutar imagen de ubuntu 
