@@ -1,0 +1,115 @@
+
+* Iniciar una imagen:
+
+	docker run -d -p 80:80 docker/getting-started
+	
+		-d - run the container in detached mode (in the background)
+		
+		-p 80:80 - map port 80 of the host to port 80 in the container
+		
+		docker/getting-started - the image to use	
+		
+		
+* Ciclo de vida:
+
+	1. Configurar fichero Dockerfile
+	
+		Desde la carpeta donde está la aplicación que quieres dockerizar, crear un archivo llamado Dockerfile ocn la configuración deseada
+
+	2. Crear imagen
+	
+		docker build -t getting-started .
+		
+			-t getting-started --> Nombre de la imagen 
+			
+			. --> Indica la carpeta donde Docker buscará el fichero Dockerfile
+		
+	3. Iniciar el contenedor:
+	
+		docker run -dp 3000:3000 getting-started
+		
+	
+	4. Parar el contenedor
+	
+		docker ps
+		
+		docker stop <the-container-id>
+		
+		
+	5. Actualizar el contenedor
+	
+		<hacemos los cambios que queramos en la carpeta que usamos como base de la imagen>
+		
+		docker build -t getting-started .
+	
+		docker rm -f <the-container-id>
+		
+			-f --> parar el contenedor si está arrancado
+			
+		docker run -dp 3000:3000 getting-started
+		
+
+* Compartiendo nuestra imagen
+
+	^ Lo hacemos a través de nuestra cuenta en Docker hub ^
+	
+	Iniciamos sesión con nuestro usuario y contraseña:
+	
+		docker login
+	
+	Renombramos la imagen:
+	
+		docker tag getting-started dtrabas/getting-started
+		
+	Y la subimos:
+	
+		docker push dtrabas/getting-started
+		
+		
+* Persistiendo información del contenedor
+
+	1. Crea un volumen
+	
+		docker volume create <nombre-volumen>
+		
+	2. Stop de container
+	
+		docker rm -f <the-container-id>
+		
+	3. Arrancamos de nuevo el container indicando el volumen y la ruta en la que se montará
+	
+		docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
+		
+	Consultar información del volumen:
+	
+		docker volume inspect todo-db
+		
+		
+* Using Bind Mounts
+
+	Named volumes are great if we simply want to store data, as we don't have to worry about where the data is stored.
+
+	When working on an application, we can use a bind mount to mount our source code into the container to let it see code changes, respond, and let us see the changes right away.
+	
+	http://localhost/tutorial/using-bind-mounts/
+
+* Comandos CLI
+
+	- docker version
+	
+		docker version [OPTIONS]
+		
+			--format , -f		Format the output using the given Go template
+
+	  Get the server version:
+	
+		docker version --format '{{.Server.Version}}'
+		
+	  Dump raw JSON data:
+	  
+		docker version --format '{{json .}}'
+
+	- docker exec
+
+		docker exec <container-id> cat /data.txt
+		
