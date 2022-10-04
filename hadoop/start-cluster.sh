@@ -32,6 +32,7 @@ docker run -itd \
                 --net=hadoop \
                 -p 50070:50070 \
                 -p 8088:8088 \
+				-p 9870:9870 \
                 --name hadoop-master \
                 --hostname hadoop-master \
 				-v /${PWD}/data:/data \
@@ -40,4 +41,4 @@ docker run -itd \
 # Nota: en el comando anterior, ponemos <-v /${PWD}/data:/data \> para que funcione el script en git-bash
 
 # get into hadoop master container
-docker exec -it hadoop-master bash
+winpty docker exec -it hadoop-master bash

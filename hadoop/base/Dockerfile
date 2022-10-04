@@ -1,3 +1,5 @@
+# Fuente original: https://www.writecode.es/2019-02-25-cluster_hadoop_docker/
+
 # Última versión LTS de Ubuntu (20.04)
 FROM ubuntu:focal
 
@@ -22,6 +24,11 @@ ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
 	chmod 0600 ~/.ssh/authorized_keys
+	
+# Creamos los directorios para los namenodes, los datanodes y los logs de Hadoop
+RUN mkdir -p ~/hdfs/namenode && \ 
+    mkdir -p ~/hdfs/datanode && \
+    mkdir $HADOOP_HOME/logs
 
 # Copiamos los ficheros de configuración y scripts que tenemos en el directorio
 # config al directorio /tmp. De ahí los vamos moviendo cada uno a su ubicación final

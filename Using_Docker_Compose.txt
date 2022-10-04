@@ -31,3 +31,4 @@ The big advantage of using Compose is you can define your application stack in a
 	^ El comando anterior no borra los volúmenes. Hay que indicarlo expresamente:
 	
 		docker-compose down --volumes
+		

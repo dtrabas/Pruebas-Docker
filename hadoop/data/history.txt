@@ -1,0 +1,78 @@
+ll
+pwd
+ls
+cd
+pwd
+cd hdfs
+ls
+exit
+ls /share
+ls
+cd /
+ls
+cd usr
+ls
+cd local
+ls
+cd hadoop
+ls
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.2.jar grep input output 'dfs[a-z.]+'
+set
+hadoop
+hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.2.jar grep input output 'dfs[a-z.]+'
+hadoop share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.2.jar grep input output 'dfs[a-z.]+'
+hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.2.jar grep input output 'dfs[a-z.]+'
+ls share/hadoop/mapreduce
+hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.1.jar grep input output 'dfs[a-z.]+'
+ls
+sbin/start-dfs.sh
+whoami
+bin/hdfs dfs -mkdir /user
+bin/hdfs dfs -mkdir /user/root
+bin/hdfs dfs -mkdir input
+bin/hdfs dfs -put etc/hadoop/*.xml input
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.1.jar grep input output 'dfs[a-z.]+'
+ll
+ls
+mkdir output
+bin/hdfs dfs -mkdir input
+bin/hdfs dfs -get output output
+ls output/
+rmdir output
+rmdir output -y
+rmdir --help
+rm -rf output
+ls
+bin/hdfs dfs -get output output
+ls output/
+cat output/*
+history
+ls
+ls -a
+cd output/
+ls
+cat part-r-00000 
+cat _SUCCESS 
+cd /data
+ls
+cd /usr/local/hadoop
+ls
+cp output/ /data/
+cp output/ /data/ -r
+mkdir /data/input
+cp etc/hadoop/*.xml /data/input/
+cp share/hadoop/mapreduce /data
+cp share/hadoop/mapreduce /data -r
+ls
+bin/hadoop com.sun.tools.javac.Main /data/wordcount/WordCount.java 
+history
+set
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+bin/hadoop com.sun.tools.javac.Main /data/wordcount/WordCount.java 
+ls
+jar cf wc.jar /data/wordcount/WordCount*.class
+ls
+mv wc.jar /data
+ll /
+history
+history > /data/history.txt
